@@ -1,0 +1,37 @@
+<form (ngSubmit)="onSubmit(createForm)" #createForm="ngForm">
+    <div class="form-group">
+      <label for="depart">Depart</label>
+      <input
+        type="text"
+        id="name"
+        name="depart"
+        class="form-control"
+        ngModel
+        required
+        style="width: 400px"/>
+    </div>
+    <div class="form-group">
+      <label for="side">Destination</label>
+      <input
+        type="text"
+        id="destination"
+        name="destination"
+        class="form-control"
+        ngModel
+        required
+        style="width: 400px"/>
+    </div>
+    <div class="form-group">
+      <label for="side">Date</label>
+      <input
+        type="date"
+        id="date"
+        name="date"
+        class="form-control"
+        ngModel
+        required
+        style="width: 400px"/>
+    </div>
+    <button [disabled]="createForm.invalid" class="btn btn-primary" type="submit">Create</button>
+  </form>
+  

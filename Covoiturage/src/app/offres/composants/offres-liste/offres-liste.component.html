@@ -1,0 +1,64 @@
+
+<div>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Depart</th>
+          <th scope="col">destination</th>
+          <th scope="col">Horraire</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let offre of offres$ | async">
+          <td>{{ offre.depart }}</td>
+          <td>{{ offre.destination }}</td>
+          <td>{{ offre.date }}</td>
+          <td>
+            <button (click)="showUpdateForm(offre)" class="btn btn-primary" style="margin: 5px">Modifier</button>
+            <button (click)="deleteOffre(offre.id)" class="btn btn-danger" style="margin: 5px">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="isUpdateActivated" style="margin-top: 50px; margin-left: 50px;">
+      <h4>Modifier Offre</h4>
+      <form (ngSubmit)="updateOffre(updateForm)" #updateForm="ngForm">
+        <div class="form-group">
+          <label for="name">Depart</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-control"
+            required
+            [(ngModel)]="offreMaj.depart"
+            style="width: 400px"/>
+        </div>
+        <div class="form-group">
+          <label for="side">Destination</label>
+          <input
+            type="text"
+            id="description"
+            name="description"
+            class="form-control"
+            required
+            [(ngModel)]="offreMaj.destination"
+            style="width: 400px"/>
+        </div>
+        <div class="form-group">
+          <label for="side">Horraire</label>
+          <input
+            type="datetime"
+            id="date"
+            name="date"
+            class="form-control"
+            required
+            [(ngModel)]="offreMaj.date"
+            style="width: 400px"/>
+        </div>
+        <button [disabled]="updateForm.invalid" class="btn btn-primary" type="submit">Modifier</button>
+      </form>
+    </div>
+  </div>
+  
